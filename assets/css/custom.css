@@ -321,7 +321,7 @@ hgroup {
 .slide-title,
 .latest-post-title,
 .card > div > h2 {
-  font-weight: 600;
+  font-weight: 500;
   color: #111;
 }
 
@@ -440,6 +440,8 @@ section.galleries {
   margin-top: 0.75rem;
   color: inherit;
 }
+
+
 
 /* ========== ABOUT ========== */
 
