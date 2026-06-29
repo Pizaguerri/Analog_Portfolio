@@ -111,4 +111,13 @@
       </section>
     {{ end }}
   {{ end }}
+  {{/* Galería completa de proyectos, sin jerarquía — la jerarquía vive solo en el slider de arriba */}}
+    {{ $projectsSection := .Site.GetPage "/projects" }}
+    {{ with $projectsSection }}
+      <section class="galleries" id="projects">
+        {{ range where .Pages "Params.private" "ne" true }}
+          {{ partial "album-card.html" . }}
+        {{ end }}
+      </section>
+    {{ end }}
 {{ end }}

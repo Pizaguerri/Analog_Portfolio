@@ -13,7 +13,7 @@ defaultContentLanguageInSubdir = false
     description = "This is my HUGO portfolio. Intended for photography or any kind of visual arts."
   [[languages.en.menu.main]]
     name = "Projects"
-    pageRef = "/projects"
+    url = "/projects"
     weight = 2  
   [[languages.en.menu.main]]
     name = "About"
