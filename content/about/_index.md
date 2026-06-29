@@ -2,7 +2,7 @@
 title: "About"
 type: "page"
 layout: "single"
-date: 2026-07-07
+date: 2026-06-07
 ---
 
 <div class="about-header">
