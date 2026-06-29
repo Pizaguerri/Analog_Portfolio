@@ -1,0 +1,64 @@
+# -------------------------------------------------
+# Sistema operativo
+# -------------------------------------------------
+.DS_Store
+Thumbs.db
+
+# -------------------------------------------------
+# Salida del sitio Hugo (generada en cada build)
+# -------------------------------------------------
+resources/_gen/
+.hugo_build.lock
+.hugo_cache/
+.hugo_server/
+public/
+
+# -------------------------------------------------
+# Node / NPM
+# -------------------------------------------------
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# -------------------------------------------------
+# Archivos de entorno / secretos
+# -------------------------------------------------
+.env
+.env.*
+.env.local
+.env.development
+.env.production
+
+# -------------------------------------------------
+# Editor / IDE
+# -------------------------------------------------
+.idea/
+.vscode/
+*.sublime-workspace
+*.sublime-project
+# VSCode/VSCodium
+*.code-workspace
+Portfolio-Pizaguerri
+
+# -------------------------------------------------
+# Temporales / logs / backups
+# -------------------------------------------------
+*.log
+*.tmp
+*.bak
+*.swp
+*.swo
+*.old
+*.orig
+
+# -------------------------------------------------
+# Otros caches
+# -------------------------------------------------
+.cache/
+.temp/
+.sass-cache/
+resources 2/
+.hugo_build.lock
+# .hugo-version (Per ara ho mantindré)public/
+public/
