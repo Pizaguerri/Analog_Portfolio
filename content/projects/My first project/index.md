@@ -1,6 +1,6 @@
 ---
 title: "My first Project"
-date: 2026-07-07
+date: 2026-06-07
 draft: false
 description: "My first photo project, writen in obsidian or any other markdown app. This also includes a featured pphoto and a gallery at the bottom of the page."
 weight: 20
