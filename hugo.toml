@@ -1,5 +1,5 @@
 # CONFIGURACIÓN BÁSICA DE HUGO
-baseURL                 = "http://localhost:1313/"
+baseURL = "https://analog-portfolio.pages.dev/"
 title                   = "ANALOG"
 defaultContentLanguage = "en"
 defaultContentLanguageInSubdir = false
@@ -13,7 +13,7 @@ defaultContentLanguageInSubdir = false
     description = "This is my HUGO portfolio. Intended for photography or any kind of visual arts."
   [[languages.en.menu.main]]
     name = "Projects"
-    url = "/projects"
+    url = "/#projects"
     weight = 2  
   [[languages.en.menu.main]]
     name = "About"
