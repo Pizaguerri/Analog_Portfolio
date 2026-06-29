@@ -1,1 +1,0 @@
-document.addEventListener("contextmenu",e=>e.preventDefault()),document.querySelectorAll("img").forEach(e=>{e.addEventListener("dragstart",e=>e.preventDefault())})
