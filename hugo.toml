@@ -28,6 +28,10 @@ defaultContentLanguageInSubdir = false
   resampleFilter = "lanczos"
   formats = ["webp", "jpg"]
 
+[caches]
+    [caches.images]
+        dir = ':cacheDir/images'
+
 [markup]
   [markup.goldmark]
     [markup.goldmark.renderer]
