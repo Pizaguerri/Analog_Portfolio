@@ -260,8 +260,9 @@ hgroup {
 }
 
 .slider-wrapper {
-  max-width: 900px;
-  margin: 0 auto;
+  max-width: none;
+  width: 100%;
+  margin: 0;
   overflow: hidden;
 }
 
@@ -304,7 +305,19 @@ hgroup {
   overflow: hidden;
 }
 
-.slide-image-real,
+.slide-image-real {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+@media (min-width: 769px) {
+  .slide-image-real {
+    height: 85vh;
+  }
+}
+
 .latest-post-img {
   width: 100%;
   height: auto;
@@ -399,7 +412,7 @@ section.galleries {
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 3rem 2rem;
   max-width: 1100px;
-  margin: 0 auto;
+  margin: 4rem auto 0;
   padding: 0 4rem;
 }
 
