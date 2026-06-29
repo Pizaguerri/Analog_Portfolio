@@ -1,0 +1,114 @@
+{{/* layouts/_default/home.html */}}
+{{ define "main" }}
+  {{ $featured := where .Site.RegularPages "Params.featured" true }}
+  
+  {{ if $featured }}
+    <section class="home-slider">
+      <div class="slider-wrapper">
+        <div class="slider-container">
+          {{ range $index, $project := $featured }}
+            {{ $cover := $project.Resources.GetMatch "*feature*" }}
+            {{ with $cover }}
+              <a href="{{ $project.RelPermalink }}" class="slide {{ if eq $index 0 }}active{{ end }}" data-index="{{ $index }}">
+                <div class="slide-image-wrapper">
+                  <img src="{{ .RelPermalink }}" alt="{{ $project.Title }}" class="slide-image-real">
+                </div>
+                <div class="slide-content">
+                  <h2 class="slide-title">{{ $project.Title }}</h2>
+                </div>
+              </a>
+            {{ end }}
+          {{ end }}
+        </div>
+      </div>
+    </section>
+    
+    <script>
+    (function() {
+      const slides = document.querySelectorAll('.slide');
+      if (slides.length <= 1) return;
+      let currentIndex = 0;
+      let animating = false;
+    
+      function goToSlide(nextIndex) {
+        if (animating) return;
+        animating = true;
+    
+        if (nextIndex < 0) nextIndex = slides.length - 1;
+        if (nextIndex >= slides.length) nextIndex = 0;
+    
+        const current = slides[currentIndex];
+        const next = slides[nextIndex];
+    
+        next.style.display = 'block';
+        next.style.transform = 'translateX(100%)';
+        next.style.position = 'absolute';
+        next.style.top = '0';
+        next.style.left = '0';
+        next.style.width = '100%';
+    
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            current.style.transition = 'transform 0.6s ease-in-out';
+            next.style.transition = 'transform 0.6s ease-in-out';
+            current.style.transform = 'translateX(-100%)';
+            next.style.transform = 'translateX(0)';
+    
+            setTimeout(() => {
+              current.classList.remove('active');
+              current.style.display = '';
+              current.style.transform = '';
+              current.style.transition = '';
+              current.style.position = '';
+    
+              next.classList.add('active');
+              next.style.position = '';
+              next.style.transition = '';
+    
+              currentIndex = nextIndex;
+              animating = false;
+            }, 600);
+          });
+        });
+      }
+    
+      setInterval(() => goToSlide(currentIndex + 1), 5000);
+    
+      let touchStartX = 0;
+      document.querySelector('.slider-container').addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+      });
+      document.querySelector('.slider-container').addEventListener('touchend', (e) => {
+        const diff = touchStartX - e.changedTouches[0].screenX;
+        if (Math.abs(diff) > 50) goToSlide(currentIndex + (diff > 0 ? 1 : -1));
+      });
+    
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') goToSlide(currentIndex - 1);
+        if (e.key === 'ArrowRight') goToSlide(currentIndex + 1);
+      });
+    })();
+    </script>
+  {{ end }}
+
+  {{/* Último post del blog */}}
+  {{ $blogSection := .Site.GetPage "/blog" }}
+  {{ with $blogSection }}
+    {{ $latestPost := index (.Pages.ByDate.Reverse) 0 }}
+    {{ with $latestPost }}
+      <section class="latest-post-section">
+        <div class="latest-post-wrapper-outer">
+          <a href="{{ .RelPermalink }}" class="latest-post-wrapper">
+            {{ $featured := .Resources.GetMatch "*featured*" }}
+            {{ with $featured }}
+              <div class="latest-post-image-container">
+                <img src="{{ .RelPermalink }}" alt="{{ $latestPost.Title }}" class="latest-post-img">
+              </div>
+              <h2 class="latest-post-title">{{ $latestPost.Title }}</h2>
+            {{ end }}
+          </a>
+        </div>
+      </section>
+    {{ end }}
+  {{ end }}
+{{ end }}

@@ -1,0 +1,23 @@
+<!doctype html>
+{{- $theme := .Params.theme | default .Site.Params.defaultTheme }}
+
+<html class="{{- if (eq $theme "light") -}}light{{- else if (eq $theme "dark") }}dark{{ end }}"
+      lang="{{ site.Language.Locale | default "en" }}">
+
+  {{ partial "head.html" . }}
+
+  <body class="bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-100{{ if .IsHome }} home{{ end }}">
+
+    {{ block "header" . }}{{ partial "header.html" . }}{{ end }}
+
+    <main class="flex-grow">
+      {{ block "main" . }}{{ end }}
+    </main>
+
+    {{ block "footer" . }}{{ partialCached "footer.html" . }}{{ end }}
+    
+    {{ $hardening := resources.Get "js/gallery-hardening.js" | resources.Minify | resources.Fingerprint }}
+    <script src="{{ $hardening.RelPermalink }}"></script>
+
+  </body>
+</html>

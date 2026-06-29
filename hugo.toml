@@ -1,0 +1,64 @@
+# CONFIGURACIÓN BÁSICA DE HUGO
+baseURL                 = "http://localhost:1313/"
+title                   = "ANALOG"
+defaultContentLanguage = "en"
+defaultContentLanguageInSubdir = false
+
+[languages.en]
+  locale = "en"
+  label = "English"
+  weight = 1
+  copyright = "Analog. All rights reserved."
+  [languages.en.params]
+    description = "This is my HUGO portfolio. Intended for photography or any kind of visual arts."
+  [[languages.en.menu.main]]
+    name = "Projects"
+    pageRef = "/projects"
+    weight = 2  
+  [[languages.en.menu.main]]
+    name = "About"
+    pageRef = "/about"
+    weight = 3
+
+[build]
+  publishResources = false
+
+[imaging]
+  quality = 82
+  resampleFilter = "lanczos"
+  formats = ["webp", "jpg"]
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+    [markup.goldmark.extensions]
+      definitionList = true
+      footnote       = true
+      linkify        = true
+      strikethrough  = true
+      table          = true
+      taskList       = true
+      typographer    = true
+      attribute      = true
+
+[params]
+  logo = "/images/profilepic.png"
+  
+  [params.author]
+    name  = "Analog"
+    email = "This is your email"
+  
+  [params.assets]
+    customCSS = ["css/custom.css"]
+  
+  [params.gallery]
+    lightbox_download = false
+  
+  [params.socialIcons]
+    codeberg  = "https://codeberg.org/Pizaguerri"
+
+    [outputs]
+      home = ["HTML", "RSS"]
+      section = ["HTML", "RSS"]
+      page = ["HTML"]

@@ -1,0 +1,19 @@
+{{ define "main" }}
+  {{ partial "title.html" . }}
+
+  {{ if ne .Params.gallery_position "bottom" }}
+    {{ partial "gallery.html" . }}
+  {{ end }}
+
+  {{ with .Content }}
+    <section class="page-content">
+      {{ . }}
+    </section>
+  {{ end }}
+
+  {{ if eq .Params.gallery_position "bottom" }}
+    {{ partial "gallery.html" . }}
+  {{ end }}
+
+  {{ partial "related.html" . }}
+{{ end }}
